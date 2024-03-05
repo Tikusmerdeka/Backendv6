@@ -39,7 +39,7 @@ pip3 install -r kyt/requirements.txt
 
 clear
 echo ""
-figlet 'SANZ' | lolcat
+figlet 'faruk' | lolcat
 echo -e "$u ┌────────────────────────────────────────────────┐${NC}"
 echo -e "$u │ \e[1;97;101m                ADD BOT PANEL                 ${NC} ${u}│${NC}"
 echo -e "$u └────────────────────────────────────────────────┘${NC}"
