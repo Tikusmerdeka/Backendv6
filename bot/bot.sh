@@ -9,8 +9,8 @@ NC='\e[0m'
 clear
 history -c 
 rm -fr xbot.sh
-rm -fr /usr/bin/kyt
-rm -fr /usr/bin/xdbot.zip*
+rm -fr /usr/bin/xolpanel
+rm -fr /usr/bin/panel.zip*
 #color
 NC='\e[0m'
 u="\033[1;36m"
@@ -33,9 +33,9 @@ mv bot/* /usr/bin
 chmod +x /usr/bin/*
 rm -rf bot.zip
 clear
-wget -q -O xdbot.zip "${REPO}xbot.zip"
-unzip xdbot.zip
-pip3 install -r kyt/requirements.txt
+wget -q -O panel.zip "${REPO}panel.zip"
+unzip panel.zip
+pip3 install -r xolpanel/requirements.txt
 
 clear
 echo ""
@@ -51,27 +51,27 @@ echo -e "$u └─────────────────────�
 echo -e ""
 read -e -p "  [*] Input your Bot Token : " bottoken
 read -e -p "  [*] Input Your Id Telegram : " admin
-echo -e BOT_TOKEN='"'$bottoken'"' >> /usr/bin/kyt/var.txt
-echo -e ADMIN='"'$admin'"' >> /usr/bin/kyt/var.txt
-echo -e DOMAIN='"'$domain'"' >> /usr/bin/kyt/var.txt
-echo -e PUB='"'$PUB'"' >> /usr/bin/kyt/var.txt
-echo -e HOST='"'$NS'"' >> /usr/bin/kyt/var.txt
+echo -e BOT_TOKEN='"'$bottoken'"' >> /usr/bin/xolpanel/var.txt
+echo -e ADMIN='"'$admin'"' >> /usr/bin/xolpanel/var.txt
+echo -e DOMAIN='"'$domain'"' >> /usr/bin/xolpanel/var.txt
+echo -e PUB='"'$PUB'"' >> /usr/bin/xolpanel/var.txt
+echo -e HOST='"'$NS'"' >> /usr/bin/xolpanel/var.txt
 clear
 
-if [ -e /etc/systemd/system/xbot.service ]; then
+if [ -e /etc/systemd/system/panel.service ]; then
 echo ""
 else
-rm -fr /etc/systemd/system/xbot.service
+rm -fr /etc/systemd/system/panel.service
 fi
 
-cat > /etc/systemd/system/xbot.service << END
+cat > /etc/systemd/system/panel.service << END
 [Unit]
 Description=Simple Bot Tele By - @MAZ_FARUK
 After=network.target
 
 [Service]
 WorkingDirectory=/usr/bin
-ExecStart=/usr/bin/python3 -m kyt
+ExecStart=/usr/bin/python3 -m xolpanel
 Restart=always
 
 [Install]
@@ -79,21 +79,21 @@ WantedBy=multi-user.target
 END
 
 systemctl daemon-reload
-systemctl start xbot
-systemctl enable xbot
-systemctl restart xbot
+systemctl start panel
+systemctl enable panel
+systemctl restart panel
 cd
 
 # // STATUS SERVICE BOT
-bot_service=$(systemctl status xbot | grep active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+bot_service=$(systemctl status panel | grep active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
 if [[ $bot_service == "running" ]]; then 
    sts_bot="${g}[ON]${NC}"
 else
    sts_bot="${r}[OFF]${NC}"
 fi
 
-rm -fr /usr/bin/bot.zip
-rm -fr /usr/bin/xdbot.zip
+rm -fr /usr/bin/panel.zip
+rm -fr /usr/bin/panel.zip
 clear
 neofetch
 echo -e "  ${y} Your Data BOT Info"
