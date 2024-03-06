@@ -21,8 +21,8 @@ green='\e[0;32m'
 TIME=$(date '+%d %b %Y')
 ipsaya=$(wget -qO- ipinfo.io/ip)
 TIMES="10"
-CHATID="6617783690"
-KEY="6751589620:AAHwjP6dzZhuqeyUOdYFc6742Q1YoVF1EjM"
+CHATID="6617783693"
+KEY="6751589620:AAHwjP6dzZhuqeyUOdYFc6742Q1YUVF1EjM"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 MYIP=$(curl -sS ipv4.icanhazip.com)
 clear
@@ -254,8 +254,8 @@ echo $host1 > /etc/xray/domain
 echo $host1 > /root/domain
 echo ""
 elif [[ $host == "2" ]]; then
-wget ${REPO}files/cf.sh && chmod +x cf.sh && ./cf.sh
-rm -f /root/cf.sh
+wget ${REPO}files/cf && chmod +x cf && ./cf
+rm -f /root/cf
 clear
 else
 print_install "Random Subdomain/Domain is Used"
